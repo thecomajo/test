@@ -22,6 +22,7 @@
         <p>코마조 고등학교 교육과정의 학년·학기별 과목 흐름과 선택그룹 규칙을 이해하고, 직접 고른 과목의 학점·이수 현황·국어·영어·수학 이수학점·2026학년도 교육과정 필수 이수학점 충족 여부를 확인해 보는 도구입니다.</p>
       </div>
     </div>
+    <div class="maker">제작자 · 전주고 조장익</div>
   </div>
 </header>
 
@@ -17054,7 +17055,7 @@ function buildPrint(){
 
   document.getElementById('printSummary').innerHTML=`
     <h1>코마조 고등학교 과목 선택 결과표</h1>
-    <div class="printMeta"><span>학생: ${esc(name)} / 희망계열: ${esc(track)}</span><span>출력일: ${date}</span></div>
+    <div class="printMeta"><span>학생: ${esc(name)} / 희망계열: ${esc(track)}</span><span>출력일: ${date} · 제작자: 전주고 조장익</span></div>
     <div class="printBox widePrintBox"><b>학기별 이수 과목</b><table class="semesterPrintTable"><colgroup><col><col><col></colgroup><thead><tr><th>학기</th><th>학점</th><th>과목</th></tr></thead><tbody>${semesterRows}</tbody></table></div>
     <div class="printBox widePrintBox"><b>교과군별 선택 결과표</b><table class="resultPrintTable"><colgroup><col><col></colgroup><thead><tr><th>교과군</th><th>선택한 과목</th></tr></thead><tbody>${resultRows}</tbody></table></div>
     <div class="printBox widePrintBox"><b>선택 내역</b><table class="choicePrintTable"><colgroup><col><col><col></colgroup><thead><tr><th>그룹</th><th>기준</th><th>선택 과목</th></tr></thead><tbody>${groupRows}</tbody></table></div>
