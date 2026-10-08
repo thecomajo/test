@@ -203,23 +203,11 @@
 <main>
   <section class="card section">
     <h2>학생 정보 및 빠른 기능</h2>
-    <div class="muted">이름과 희망계열은 인쇄용 결과표에만 반영됩니다. 선택그룹은 일반계 고등학교 교육과정의 선택 과목 수 기준으로 자동 제한됩니다.</div>
-    <div class="toolbar">
+    <div class="muted">이름은 인쇄용 결과표에만 반영됩니다. 선택그룹은 일반계 고등학교 교육과정의 선택 과목 수 기준으로 자동 제한됩니다.</div>
+    <div class="toolbar" style="grid-template-columns:1fr!important">
       <input id="studentName" type="text" placeholder="학생 이름">
-      <select id="track">
-        <option>계열 미정</option>
-        <option>인문사회</option>
-        <option>상경·경영</option>
-        <option>자연·공학</option>
-        <option>의약·보건</option>
-        <option>교육</option>
-        <option>예체능</option>
-      </select>
     </div>
     <div class="pillbar">
-      <button onclick="autoSelect('balanced')">균형형 자동선택</button>
-      <button class="secondary" onclick="autoSelect('science')">자연·공학형</button>
-      <button class="secondary" onclick="autoSelect('human')">인문사회형</button>
       <button class="ghost" onclick="clearChoices()">선택 초기화</button>
       <button class="printBtn" onclick="window.print()">결과 인쇄</button>
     </div>
@@ -3497,6 +3485,54 @@ const SUBJECTS = [
     "choiceKind": "탐구",
     "branch": "융합"
   },
+{
+  "id": "cwg137",
+  "row": 137,
+  "area": "학생선택",
+  "group": "예술",
+  "name": "음악과 미디어",
+  "type": "융합 선택",
+  "selectGroup": "3학년 2학기 통합 선택 (택8)",
+  "special": "-",
+  "chooseCount": 8,
+  "baseCredit": 3,
+  "credit": 3,
+  "minCredit": 3,
+  "semesters": {
+    "1-1": 0,
+    "1-2": 0,
+    "2-1": 0,
+    "2-2": 0,
+    "3-1": 0,
+    "3-2": 3
+  },
+  "choiceKind": "생활교양",
+  "branch": ""
+},
+{
+  "id": "cwg138",
+  "row": 138,
+  "area": "학생선택",
+  "group": "예술",
+  "name": "미술과 매체",
+  "type": "융합 선택",
+  "selectGroup": "3학년 2학기 통합 선택 (택8)",
+  "special": "-",
+  "chooseCount": 8,
+  "baseCredit": 3,
+  "credit": 3,
+  "minCredit": 3,
+  "semesters": {
+    "1-1": 0,
+    "1-2": 0,
+    "2-1": 0,
+    "2-2": 0,
+    "3-1": 0,
+    "3-2": 3
+  },
+  "choiceKind": "생활교양",
+  "branch": ""
+},
   {
     "id": "cwg134",
     "row": 134,
@@ -3521,6 +3557,54 @@ const SUBJECTS = [
     "choiceKind": "생활교양",
     "branch": ""
   },
+{
+  "id": "cwg139",
+  "row": 139.0,
+  "area": "학생선택",
+  "group": "기술가정/정보",
+  "name": "로봇과 공학세계",
+  "type": "진로 선택",
+  "selectGroup": "3학년 2학기 통합 선택 (택8)",
+  "special": "-",
+  "chooseCount": 8,
+  "baseCredit": 3,
+  "credit": 3,
+  "minCredit": 3,
+  "semesters": {
+    "1-1": 0,
+    "1-2": 0,
+    "2-1": 0,
+    "2-2": 0,
+    "3-1": 0,
+    "3-2": 3
+  },
+  "choiceKind": "생활교양",
+  "branch": ""
+},
+{
+  "id": "cwg140",
+  "row": 140.0,
+  "area": "학생선택",
+  "group": "기술가정/정보",
+  "name": "지식 재산 일반",
+  "type": "융합 선택",
+  "selectGroup": "3학년 2학기 통합 선택 (택8)",
+  "special": "-",
+  "chooseCount": 8,
+  "baseCredit": 3,
+  "credit": 3,
+  "minCredit": 3,
+  "semesters": {
+    "1-1": 0,
+    "1-2": 0,
+    "2-1": 0,
+    "2-2": 0,
+    "3-1": 0,
+    "3-2": 3
+  },
+  "choiceKind": "생활교양",
+  "branch": ""
+},
   {
     "id": "cwg135",
     "row": 135,
@@ -17169,16 +17253,6 @@ function formatCredit(value){
   return Number.isInteger(value) ? String(value) : value.toFixed(1);
 }
 
-const RECOMMEND = {
-  '자연·공학':['정보','중국어','미적분Ⅱ','이산 수학','정보 과학','물리학','화학','생명과학','지구과학','전자기와 양자','물질과 에너지','세포와 물질대사','지구시스템과학','역학과 에너지','화학 반응의 세계','데이터 과학','미식과학의 이해','보건','융합과학 탐구','기후변화와 환경생태'],
-  '의약·보건':['미적분Ⅱ','화학','생명과학','보건','인간과 심리','미식과학의 이해','물질과 에너지','세포와 물질대사','화학 반응의 세계','사람의 유전','기후변화와 환경생태','데이터 과학'],
-  '인문사회':['정보','중국어','세계시민과 지리','세계사','사회와 문화','현대사회와 윤리','정치','한국지리 탐구','동아시아 역사 기행','법과 사회','경제','윤리와 사상','인간과 철학','인간과 심리','교육의 이해','보건','도시의 미래 탐구','인문학과 윤리','국제 관계의 이해','사회문제 탐구','데이터 과학','미식과학의 이해'],
-  '상경·경영':['정보','중국어','경제','정치','사회와 문화','법과 사회','국제 관계의 이해','실용 통계','데이터 과학','인간과 심리','보건','사회문제 탐구','윤리 문제 탐구'],
-  '교육':['정보','중국어','교육의 이해','사회와 문화','현대사회와 윤리','인문학과 윤리','인간과 심리','보건','인간과 철학','미식과학의 이해','데이터 과학','독서 토론과 글쓰기'],
-  '예체능':['정보','중국어','음악','미술','음악 연주와 창작','미술 창작','스포츠 문화','스포츠 과학','스포츠 생활1','스포츠 생활2','보건','교육의 이해','미식과학의 이해']
-};
-
-
 const GROUP_RULES = {};
 
 function groupRuleResult(group, picked){
@@ -17435,7 +17509,6 @@ function applyUniversityRecommendation(idx){
 function init(){
   renderFixed();
   renderChoices();
-  document.getElementById('track').addEventListener('change', update);
   document.getElementById('studentName').addEventListener('input', buildPrint);
   update();
 }
@@ -17651,33 +17724,8 @@ function clearChoices(doUpdate=true){
   if(doUpdate) update();
 }
 
-function autoSelect(mode){
-  clearChoices();
-  const grouped={};
-  SUBJECTS.filter(s=>s.selectGroup!=='지정').forEach(s=>(grouped[s.selectGroup]??=[]).push(s));
-  const pref=mode==='science'?RECOMMEND['자연·공학']:mode==='human'?RECOMMEND['인문사회']:['정보','중국어','미적분Ⅱ','사회와 문화','화학','생명과학','경제','교육의 이해','보건','인간과 심리','데이터 과학','미식과학의 이해','융합과학 탐구','기후변화와 환경생태'];
-  Object.keys(grouped).sort(groupSort).forEach(g=>{
-    const arr=[...grouped[g]];
-    const need=arr[0].chooseCount;
-    arr.sort((a,b)=>score(b,pref)-score(a,pref));
-    for(const s of arr){
-      if(SUBJECTS.filter(x=>x.selectGroup===g && selected.has(x.id)).length>=need) break;
-      chooseSubjectIfPossible(s);
-    }
-  });
-  update();
-}
-
-function score(s,pref){
-  let v=0;
-  pref.forEach((p,i)=>{if(s.name.includes(p)) v+=100-i;});
-  if(['국어','수학','영어','사회','과학'].includes(s.group)) v+=5;
-  return v;
-}
-
 function buildPrint(){
   const name=document.getElementById('studentName').value.trim()||'미입력';
-  const track=document.getElementById('track').value;
   const date=new Date().toLocaleDateString('ko-KR');
   const fixedSubjects=SUBJECTS.filter(s=>s.selectGroup==='지정');
   const choiceSubjects=SUBJECTS.filter(s=>s.selectGroup!=='지정' && selected.has(s.id));
@@ -17718,7 +17766,7 @@ function buildPrint(){
 
   document.getElementById('printSummary').innerHTML=`
     <h1>일반계 고등학교 과목 선택 결과표</h1>
-    <div class="printMeta"><span>학생: ${esc(name)} / 희망계열: ${esc(track)}</span><span>출력일: ${date} · 제작자: 전주고 조장익</span></div>
+    <div class="printMeta"><span>학생: ${esc(name)}</span><span>출력일: ${date} · 제작자: 전주고 조장익</span></div>
     <div class="printBox widePrintBox"><b>학기별 이수 과목</b><table class="semesterPrintTable"><colgroup><col><col><col></colgroup><thead><tr><th>학기</th><th>학점</th><th>과목</th></tr></thead><tbody>${semesterRows}</tbody></table></div>
     <div class="printBox widePrintBox"><b>교과군별 선택 결과표</b><table class="resultPrintTable"><colgroup><col><col></colgroup><thead><tr><th>교과군</th><th>선택한 과목</th></tr></thead><tbody>${resultRows}</tbody></table></div>
     <div class="printBox widePrintBox"><b>선택 내역</b><table class="choicePrintTable"><colgroup><col><col><col></colgroup><thead><tr><th>그룹</th><th>기준</th><th>선택 과목</th></tr></thead><tbody>${groupRows}</tbody></table></div>
