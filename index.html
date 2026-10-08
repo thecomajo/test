@@ -17557,7 +17557,7 @@ function renderChoices(){
     const need=arr[0].chooseCount;
     const credit=arr[0].credit;
     const firstSem=SEM_KEYS.find(k=>arr.some(s=>s.semesters[k]>0));
-    return `<div class="group" data-group="${g}"><div class="groupHead"><div><div class="groupTitle"><span class="groupName">${g}</span><span class="semester">${groupTerm(g)}</span></div>${groupRuleHtml(g,need,credit)}</div><span id="badge-${g}" class="badge">0/${need}</span></div><div class="subjects">${arr.map(s=>`<label class="subject ${s.schoolSpecial ? 'schoolSpecialSubject' : ''}" id="card-${s.id}"><input type="checkbox" value="${s.id}" onchange="toggleSubject('${s.id}')"><div class="subjectBody"><div class="subjectTopLine"><span class="subName">${esc(s.name)}</span><span class="creditBadge">${s.credit}학점</span></div>${semText(s)?`<div class="subMeta">${esc(semText(s))}</div>`:''}<div class="chips">${subjectTags(s)}</div></div></label>`).join('')}</div></div>`;
+    return `<div class="group" data-group="${g}"><div class="groupHead"><div><div class="groupTitle"><span class="groupName">${g}</span><span class="semester">${groupTerm(g)}</span></div>${groupRuleHtml(g,need,credit)}</div><span id="badge-${g}" class="badge">0/${need}</span></div><div class="subjects">${arr.map(s=>`<label class="subject ${s.schoolSpecial ? 'schoolSpecialSubject' : ''}" id="card-${s.id}"><input type="checkbox" value="${s.id}" onchange="toggleSubject('${s.id}')"><div class="subjectBody"><div class="subjectTopLine"><span class="subName">${esc(s.name)}</span><span class="creditBadge">${s.credit}학점</span></div><div class="chips">${subjectTags(s)}</div></div></label>`).join('')}</div></div>`;
   }).join('');
 }
 
@@ -17618,7 +17618,7 @@ function renderRequired(all){
     box.innerHTML = '일반고 교과군별 필수 이수학점 기준(총 84학점)을 모두 충족했습니다. <span class="small">한국사 6학점, 사회 8학점, 예술 10학점, 기술가정/정보/제2외국어/한문/교양 16학점을 각각 점검합니다.</span>';
   } else {
     box.className = 'warnBox err';
-    box.innerHTML = '부족한 교과군: ' + esc(lacks.join(' / ')) + '<span class="small">PDF 원본 편성은 예술 교과를 최대 8학점까지 이수할 수 있어 일반고 기준 10학점 충족에는 2학점 추가 편성이 필요합니다.</span>';
+    box.innerHTML = '부족한 교과군: ' + esc(lacks.join(' / '));
   }
   return ok;
 }
